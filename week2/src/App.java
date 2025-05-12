@@ -12,5 +12,12 @@ public class App {
             case SATURDAY, SUNDAY -> System.out.println("It's the weekend");
         }
         scanner.close();
+
+        //Final
+        // with class -> cannot extend the class
+        //with method -> cannot override method in child class
+        //with variable -> can only assign one time
+        final Dog myDog = new Dog();
+        //myDog = new Dog();  cannot reassign
         }
 }
