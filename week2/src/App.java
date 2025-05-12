@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        //In Java, public static final is used to create constants. 
+        //When you create an enum, Java automatically makes each value a public static final instance. 
+        //So, enums are actually just predefined constants of a specific type.
         
         Scanner scanner = new Scanner(System.in);
         System.out.println("What day is it? ");
@@ -14,6 +18,7 @@ public class App {
         scanner.close();
 
         //Final
+        //to create constants (uppercase and _ to separate words)
         // with class -> cannot extend the class
         //with method -> cannot override method in child class
         //with variable -> can only assign one time
