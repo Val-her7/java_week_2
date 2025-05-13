@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -24,5 +27,21 @@ public class App {
         //with variable -> can only assign one time
         final Dog myDog = new Dog();
         //myDog = new Dog();  cannot reassign
+
+
+        //Stream -> The Stream API is used to process collections of objects (List, Set, ...)
+        //          Enable us to perform operations like filtering, mapping, reducing, and sorting.
+        //          Streams don’t change the original data structure, they only provide the result as per the pipelined methods.
+        //          Each intermediate operation is lazily executed and returns a stream as a result, hence, various intermediate operations can be pipelined. Terminal operations mark the end of the stream and return the result.
+        List<Integer> nums = Arrays.asList(1,9,3,5,2,7);
+        Stream<Integer> data = nums.stream();
+        Stream<Integer> squaredData = data.map(n -> n *n);
+        squaredData.forEach(n -> System.out.println(n));
+
+        List<String> names = Arrays.asList("Valentin", "Christophe", "Nicolas", "Anthony");
+        names.stream()
+                    .sorted()
+                    .map(String::toUpperCase)
+                    .forEach(name -> System.out.println(name));
         }
 }
