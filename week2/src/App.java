@@ -44,4 +44,10 @@ public class App {
                     .map(String::toUpperCase)
                     .forEach(name -> System.out.println(name));
         }
+
+        //max() returns an Optional, which can be empty if no element matches the criteria.
+        //          ifPresent(): Performs an action if a value is present.
+        //          orElse(): Returns a default value if the Optional is empty.
+    //              orElseThrow(): Throws an exception if the Optional is empty.
+        // In summary, you handle the Optional in different ways depending on whether you simply want to check if a value is present, provide a default value, or throw an exception if the value is absent.
 }
