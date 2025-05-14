@@ -30,9 +30,4 @@ public class CsvRows {
     String getValue(){
         return this.value;
     }
-
-    @Override
-    public String toString(){
-        return "The number of rows concerned is: " + numberOfRows;
-    }
 }
