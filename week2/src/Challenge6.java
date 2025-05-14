@@ -40,6 +40,17 @@ public class Challenge6 {
                     .sorted(Comparator.comparingLong(d -> Long.parseLong(d.getValue())))
                     .reduce((first, second) -> second)
                     .ifPresent(maxValue -> System.out.println(maxValue));
+
+            //extra: output the sum instead of the hihghest value
+            long totalExports = data.stream()
+                    .filter(d -> d.getDirection().equals("Exports")
+                        && d.getYear().equals("2019")
+                        && d.getCountry().equals("China")
+                        && d.getCommodity().equals("All")
+                        && d.getTransportMode().equals("All"))
+                    .mapToLong(d -> Long.parseLong(d.getValue()))
+                    .sum();
+            System.out.println("Total exports for China in 2019: " + totalExports);
         }
         catch(FileNotFoundException e){
             System.out.println("Sorry, we cannot locate file location");
