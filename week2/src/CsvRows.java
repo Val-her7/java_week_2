@@ -3,6 +3,8 @@ public class CsvRows {
     String direction;
     String year;
     String country;
+    String commodity;
+    String transportMode;
     String value;
     String measure;
 
@@ -26,6 +28,17 @@ public class CsvRows {
         numberOfRows ++;
     }
 
+    //OVERLOADED CONSTRUCTOR
+    CsvRows(String direction, String year, String country,String commodity, String transportMode, String value){
+        this.direction = direction;
+        this.year = year;
+        this.country = country;
+        this.commodity = commodity;
+        this.transportMode = transportMode;
+        this.value = value;
+        numberOfRows ++;
+    }
+
     String getDirection(){
         return this.direction;
     }
@@ -38,11 +51,24 @@ public class CsvRows {
         return this.country;
     }
 
+    String getCommodity(){
+        return this.commodity;
+    }
+
+    String getTransportMode(){
+        return this.transportMode;
+    }
+
     String getValue(){
         return this.value;
     }
 
     String getMeasure(){
         return this.measure;
+    }
+
+    @Override
+    public String toString(){
+        return "Direction: " + this.direction + " Country: " + this.country + " Commodity: " + this.commodity + " Transport_Mode: " + this.transportMode + " Value: " + this.value;
     }
 }
