@@ -11,21 +11,25 @@ public class Challenge3 {
         try(BufferedReader reader = new BufferedReader(new FileReader("week2\\src\\covid_and_trade.csv"))){
 
             System.out.println("That file exists!");
+            reader.readLine();
             String line;
-            List<List<String>> data = new ArrayList<>();
+
+            List<CsvRows> data = new ArrayList<>();
             String searchedCountry = "All";
 
             while((line = reader.readLine())!= null){
                 List<String> row = QuotedFieldParser.parseQuotedLine(line);
-                data.add(row);
+                data.add(new CsvRows(row.get(0), row.get(1), row.get(4), row.get(8)));
             }
             
             data.stream()
-                    .filter(d -> (d.get(0).equals("Imports")
-                        || d.get(0).equals("Exports"))
-                        && d.get(1).equals("2016")
-                        && d.get(4).equals(searchedCountry))
-                    .forEach(n -> System.out.println(n));
+                    .filter(d -> (d.getDirection().equals("Imports")
+                        || d.getDirection().equals("Exports"))
+                        && d.getYear().equals("2016")
+                        && d.getCountry().equals(searchedCountry))
+                    .forEach(n -> System.out.println(n.getValue()));
+            
+            System.out.println(CsvRows.numberOfRows);
         }
         catch(FileNotFoundException error){
             System.out.println("Sorry, we cannot locate file location");
