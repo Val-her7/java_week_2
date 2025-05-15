@@ -44,15 +44,6 @@ public class Challenge7 {
             }
 
             //data 2019
-            //first try
-            // Map<String, Long> exportsIn2019EuropaByMonth = data.stream()
-            //         .filter(d -> d.direction().equals("Exports")
-            //         && d.year().equals("2019")
-            //         && d.country().equals("European Union (27)"))
-            //         .collect(Collectors.groupingBy(CovidData::date, Collectors.summingLong(c -> Long.parseLong(c.value()))));
-            
-            //linkedhash better here because keep order of insertion
-            //data 2019
             LinkedHashMap<String, Long> exportsIn2019EuropaByMonth = data.stream()
                     .filter(d -> d.direction().equals("Exports")
                     && d.year().equals("2019")
@@ -66,8 +57,6 @@ public class Challenge7 {
                     && d.country().equals("European Union (27)"))
                     .collect(Collectors.groupingBy(CovidData::date, LinkedHashMap::new, Collectors.summingLong(c -> Long.parseLong(c.value()))));
 
-            System.out.println(exportsIn2019EuropaByMonth);
-            System.out.println(exportsIn2020EuropaByMonth);
             printResults(exportsIn2019EuropaByMonth, exportsIn2020EuropaByMonth);
 
         } catch (FileNotFoundException e) {
