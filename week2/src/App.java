@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -111,6 +112,13 @@ public class App {
         System.out.println(customMap(nums, t -> t * t));
         System.out.println(customMap(names, t -> t.toUpperCase()));
         System.out.println(customMap(names, t -> t.length()));
+
+        //Consume Optionnal
+        Optional<String> name = getName("Val");
+        name.ifPresent(n -> System.out.println(n));
+        Optional<String> nullName = getName(null);
+        nullName.orElse("unknown name");
+        nullName.orElseThrow();
     }
     //Create simple stream with functionnal interface
     //own filter with Predicate
@@ -132,4 +140,13 @@ public class App {
         }
         return customList;
     } 
+
+    //Optional<T> represents a container that may or may not hold a value.
+    //It helps avoid NullPointerException by forcing you to handle the possible absence of a value.
+    //Create Optional ->Optional.of(value)  = Use when you're sure the value is not null. Throws a NullPointerException if the value is null.
+    //                  Optional.ofNullable(value) = Use when you're not sure if the value is null. Returns an empty Optional if the value is null.
+    //                  Optional.empty() = Use to explicitly create an empty Optional.
+    public static Optional<String> getName(String name){
+        return Optional.ofNullable(name);
+    }
 }
